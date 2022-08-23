@@ -1,0 +1,69 @@
+﻿@page "/employee"
+@using DemoProject_CrudBlazor.Data;
+@inject EmployeeService objEmpService
+
+    <h1 class="btn btn-primary btn-block">Employee Information</h1>
+
+
+    <NavLink class="nav-link " href="AddEmployee">
+
+        <span class="oi oi-plus" aria-hidden="true"></span>Add New
+
+
+    </NavLink>
+
+
+    @if (objEmp == null)
+    {
+       <div class="spinner-grow"></div>
+    }
+
+    else
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in objEmp)
+                {
+                    <tr>
+
+                        <td>@emp.Name</td>
+                        <td>@emp.Gender</td>
+                        <td>@emp.City</td>
+                        <td>@emp.Country</td>
+                        <td>
+                            <div>
+                                <a class="nav-link" href="EditEmployee/@emp.EmployeeId">
+                                    <span class="oi oi-pencil" aria-hidden="true"></span>Edit
+                                </a>
+                                <a class="nav-link" href="DeleteEmployee/@emp.EmployeeId">
+                                    <span class="oi oi-trash" aria-hidden="true"></span>Delete
+                                </a>
+                            </div>
+                            
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    @code {
+
+        List<Employeeinfo> objEmp;
+
+        protected override async Task OnInitializedAsync()
+        {
+            objEmp = await Task.Run(() => objEmpService.GetEmployee());
+            
+        }
+    }
