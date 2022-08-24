@@ -91,7 +91,7 @@ using DemoProject_CrudBlazor.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 67 "D:\Asp.Net Core Blazor Project\DemoProject_CrudBlazor\DemoProject_CrudBlazor\Pages\AddEmployee.razor"
+#line 60 "D:\Asp.Net Core Blazor Project\DemoProject_CrudBlazor\DemoProject_CrudBlazor\Pages\AddEmployee.razor"
        
     Employeeinfo objemp = new Employeeinfo();
 
